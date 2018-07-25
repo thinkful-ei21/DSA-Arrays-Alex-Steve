@@ -141,6 +141,9 @@ function main() {
     products([1, 3, 9, 4]);
 
     console.log(twoDimArray([[1,0,1,1,0], [0,1,1,1,0], [1,1,1,1,1], [1,0,1,1,1], [1,1,1,1,1]]));
+
+    console.log(stringRotation("amazon", "azonma"));
+    console.log(stringRotation("amazon", "azonam"));
 }
 
 function mergeArrays(arr1, arr2) {
@@ -248,6 +251,26 @@ function constructArray(arr, coords) {
 		}
 	}
 	return arr;
+}
+
+function stringRotation(str1, str2) {
+
+	let temp = "";
+	if(str1 === str2) {
+		return true;
+	}
+
+	for(let i=1; i<str2.length; i++) {
+		if(str2[i] === str1[0]) {
+			if(i !== str2.length-1) {
+				temp = str2.substring(i) + str2.substring(0, i);
+				if(temp === str1) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 main();
