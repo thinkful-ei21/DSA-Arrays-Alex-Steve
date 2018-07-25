@@ -53,6 +53,28 @@ class Array {
         this.length--;
     }
 
+    makeUrl(str) {
+    	let tempStr = str;
+    	let strIter = 0;
+    	for(let i=0; i<str.length; i++) {
+    		if(str[i] === ' ') {
+    			tempStr += str.substring(strIter, i) + '%20';
+    			strIter = i+1;
+    		}
+    	}
+    	tempStr += str.substr(strIter);
+    	return tempStr;
+    }
+
+    filterLessThanFive() {
+    	for(let i=0; i<this.length; i++) {
+    		if(this.get(i) < 5) {
+    			this.remove(i);
+    			i--;
+    		}
+    	}
+    }
+
 }
 Array.SIZE_RATIO = 3;
 
@@ -68,6 +90,15 @@ function main() {
     arr.push(45);
     arr.push(10);
 
+    arr.pop();
+    arr.pop();
+    arr.pop();
+
+    console.log(arr);
+    const str = arr.makeUrl("www.thinkful.com /tauh ida parv een");
+    console.log(str);
+
+    arr.filterLessThanFive();
     console.log(arr);
 }
 
