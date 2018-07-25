@@ -135,6 +135,10 @@ function main() {
     arrTemp2 = [2, 3, 5, 8, 9, 10];
 
     console.log(mergeArrays(arrTemp1, arrTemp2));
+
+    console.log(removeCharacters('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
+
+    products([1, 3, 9, 4]);
 }
 
 function mergeArrays(arr1, arr2) {
@@ -170,6 +174,43 @@ function mergeArrays(arr1, arr2) {
 function swap(arr, i, j) {
 	const temp = arr.get(i);
 
+}
+
+function removeCharacters(str, rmv) {
+	let rtn = "";
+	let current = '';
+	for(let i=0; i<str.length; i++) {
+		current = str[i];
+		for(let j=0; j<rmv.length; j++) {
+			if(current === rmv[j]) {
+				current = '';
+			}
+		}
+		rtn += current;
+	}
+
+	return rtn;
+}
+
+function products(arr) {
+	
+	let product = 1;
+	let productArr = new Array();
+	let productStr = "";
+
+	for(let i=0; i<arr.length; i++) {
+		product = 1;
+		for(let j=0; j<arr.length; j++) {
+			if(i !== j) {
+				product *= arr[j];
+			}
+		}
+		productArr.push(product);
+		productStr += product + " ";
+	}
+
+	console.log(productStr);
+	return productArr;
 }
 
 main();
