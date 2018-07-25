@@ -130,6 +130,46 @@ function main() {
     arr1.push(1);
     
     console.log(arr1.maxSum());
+
+    arrTemp1 = [1, 3, 6, 8, 11];
+    arrTemp2 = [2, 3, 5, 8, 9, 10];
+
+    console.log(mergeArrays(arrTemp1, arrTemp2));
+}
+
+function mergeArrays(arr1, arr2) {
+    
+	let currentMin = arr1[0] < arr2[0] ? arr1[0] : arr2[0];
+	let outputString = "" + currentMin;
+	let iter1 = arr1[0] < arr2[0] ? 1 : 0;
+	let iter2 = arr1[0] < arr2[0] ? 0 : 1;
+	let combined = new Array();
+	combined.push(currentMin);
+
+	while(iter1 < arr1.length || iter2 < arr2.length) {
+		if((iter1 < arr1.length && iter2 < arr2.length)) {
+			currentMin = arr1[iter1] < arr2[iter2] ? arr1[iter1] : arr2[iter2];
+			arr1[iter1] < arr2[iter2] ? iter1++ : iter2++;
+			combined.push(currentMin);
+			outputString += " " + currentMin;
+		} else if(iter1 < arr1.length) {
+			combined.push(arr1[iter1]);
+			outputString += " " + arr1[iter1];
+			iter1++;
+		} else {
+			combined.push(arr2[iter2]);
+			outputString += " " + arr2[iter2];
+			iter2++;
+		}
+	}
+
+	console.log(outputString);
+	return combined;
+}
+
+function swap(arr, i, j) {
+	const temp = arr.get(i);
+
 }
 
 main();
