@@ -139,6 +139,8 @@ function main() {
     console.log(removeCharacters('Battle of the Vowels: Hawaii vs. Grozny', 'aeiou'));
 
     products([1, 3, 9, 4]);
+
+    console.log(twoDimArray([[1,0,1,1,0], [0,1,1,1,0], [1,1,1,1,1], [1,0,1,1,1], [1,1,1,1,1]]));
 }
 
 function mergeArrays(arr1, arr2) {
@@ -211,6 +213,41 @@ function products(arr) {
 
 	console.log(productStr);
 	return productArr;
+}
+
+function twoDimArray(arr) {
+	let arr1 = [];
+	let coords = [];
+	for(let i=0; i<arr.length; i++) {
+		arr1.push([]);
+
+		for(let j=0; j<arr[i].length; j++) {
+			arr1[arr1.length-1].push(arr[i][j]);
+			if(arr[i][j] === 0) {
+				coords.push([i, j]);
+			}
+		}
+	}
+	// console.log(coords);
+	return constructArray(arr1, coords);
+}
+
+// the coordinates which dictate that the row, column be cleared out
+function constructArray(arr, coords) {
+
+	let temp;
+	console.log(arr);
+	for(let i=0; i<coords.length; i++) {
+		for(let j=0; j<arr.length; j++) {
+			temp = coords[i][1];
+			arr[j][temp] = 0;
+		}
+		temp = coords[i][0];
+		for(let k=0; k<arr[temp].length; k++) {
+			arr[temp][k] = 0;
+		}
+	}
+	return arr;
 }
 
 main();
