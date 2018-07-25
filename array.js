@@ -67,12 +67,32 @@ class Array {
     }
 
     filterLessThanFive() {
+    	let output = "";
     	for(let i=0; i<this.length; i++) {
     		if(this.get(i) < 5) {
     			this.remove(i);
     			i--;
+    		} else {
+    			output += " " + this.get(i);
     		}
     	}
+    	return output;
+    }
+
+    maxSum() {
+    	
+    	let max = 0;
+    	let tempMax = 0;
+    	let current = 0;
+
+    	for(let i=0; i<this.length; i++) {
+    		current = this.get(i);
+    		tempMax += current;
+    		if(tempMax > max) {
+    			max = tempMax;
+    		}
+    	}
+		return max;
     }
 
 }
@@ -90,16 +110,26 @@ function main() {
     arr.push(45);
     arr.push(10);
 
-    arr.pop();
-    arr.pop();
-    arr.pop();
+    // arr.pop();
+    // arr.pop();
+    // arr.pop();
 
     console.log(arr);
     const str = arr.makeUrl("www.thinkful.com /tauh ida parv een");
     console.log(str);
 
-    arr.filterLessThanFive();
-    console.log(arr);
+    console.log(arr.filterLessThanFive());
+
+    let arr1 = new Array();
+
+    arr1.push(4);
+    arr1.push(6);
+    arr1.push(-3);
+    arr1.push(5);
+    arr1.push(-2);
+    arr1.push(1);
+    
+    console.log(arr1.maxSum());
 }
 
 main();
